@@ -73,7 +73,8 @@ class PayloadBuilder
             null, // phonenumber is optional
             $this->settingService->getTitle($salesChannelId),
             $this->settingService->getLogo($salesChannelId),
-            $this->settingService->getDescription($salesChannelId)
+            $this->settingService->getDescription($salesChannelId),
+            $this->settingService->getSubaccountId($salesChannelId)
         );
     }
 }

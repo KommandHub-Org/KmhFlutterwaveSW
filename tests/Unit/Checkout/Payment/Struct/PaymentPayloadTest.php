@@ -74,6 +74,15 @@ class PaymentPayloadTest extends TestCase
 
         static::assertSame(['email' => 'customer@example.com'], $array['customer']);
         static::assertSame([], $array['customizations']);
+        static::assertArrayNotHasKey('subaccounts', $array);
+    }
+
+    public function testASubaccountGetsThePaymentWithoutACutForTheMainAccount(): void
+    {
+        $payload = new PaymentPayload(100.0, 'NGN', 'tx-ref-123', 'https://shop.example/return', 'customer@example.com', subaccountId: 'RS_ABC');
+
+        static::assertSame([['id' => 'RS_ABC', 'transaction_charge_type' => 'flat', 'transaction_charge' => 0]], $payload->toArray()['subaccounts']);
+        static::assertArrayNotHasKey('subaccounts', (new PaymentPayload(100.0, 'NGN', 'tx', 'https://r', 'c@e.com', subaccountId: ''))->toArray());
     }
 
     /**

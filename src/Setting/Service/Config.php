@@ -105,6 +105,12 @@ class Config
      * The payment method title shown to the customer on Flutterwave's hosted
      * checkout page.
      */
+    /** Flutterwave subaccount (`RS_…`) the sales channel's payments settle to; '' settles to the main account. */
+    public function getSubaccountId(?string $salesChannelId = null): string
+    {
+        return $this->getString('subaccountId', $salesChannelId);
+    }
+
     public function getTitle(?string $salesChannelId = null): string
     {
         return $this->getString('title', $salesChannelId) ?: 'Pay with Flutterwave';

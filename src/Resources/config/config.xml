@@ -184,6 +184,33 @@
     </card>
 
     <card>
+        <title>Split payment</title>
+        <title lang="de-DE">Zahlungsaufteilung</title>
+        <title lang="fr-FR">Paiement fractionné</title>
+
+        <input-field type="text">
+            <name>subaccountId</name>
+            <label>Subaccount ID</label>
+            <label lang="de-DE">Subaccount-ID</label>
+            <label lang="fr-FR">ID du sous-compte</label>
+            <placeholder>RS_…</placeholder>
+            <helpText>
+                Set per sales channel: payments of this channel settle to this Flutterwave subaccount, which bears the
+                Flutterwave fees; the main account keeps nothing. Leave empty to settle to the main account.
+            </helpText>
+            <helpText lang="de-DE">
+                Pro Verkaufskanal: Zahlungen dieses Kanals werden an diesen Flutterwave-Subaccount ausgezahlt, der
+                auch die Flutterwave-Gebühren trägt; das Hauptkonto behält nichts. Leer lassen, um an das Hauptkonto
+                auszuzahlen.
+            </helpText>
+            <helpText lang="fr-FR">
+                Par canal de vente : les paiements de ce canal sont versés à ce sous-compte Flutterwave, qui supporte
+                les frais Flutterwave ; le compte principal ne garde rien. Laisser vide pour verser au compte principal.
+            </helpText>
+        </input-field>
+    </card>
+
+    <card>
         <title>General</title>
 
         <input-field type="int">

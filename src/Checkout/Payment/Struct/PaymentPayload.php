@@ -35,6 +35,7 @@ final class PaymentPayload
         private readonly ?string $title = null,
         private readonly ?string $logo = null,
         private readonly ?string $description = null,
+        private readonly ?string $subaccountId = null,
     ) {
     }
 
@@ -78,6 +79,11 @@ final class PaymentPayload
                 'logo' => $this->logo,
                 'description' => $this->description,
             ], static fn (?string $value): bool => $value !== null && $value !== ''),
+            // The whole payment goes to the subaccount: the main account's charge is a flat 0, and as the party
+            // receiving the remainder the subaccount also bears Flutterwave's fee.
+            ...($this->subaccountId === null || $this->subaccountId === '' ? [] : [
+                'subaccounts' => [['id' => $this->subaccountId, 'transaction_charge_type' => 'flat', 'transaction_charge' => 0]],
+            ]),
         ];
     }
 }

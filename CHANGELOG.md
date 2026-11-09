@@ -1,3 +1,7 @@
+# Unreleased
+
+- Added: split payment per sales channel. With a subaccount ID (`RS_...`) set for a sales channel, its payments settle to that Flutterwave subaccount, which bears Flutterwave's fees; the main account keeps nothing.
+
 # 0.9.0-beta.2
 
 Pre-release for internal development, QA and sandbox/staging testing. Fixes

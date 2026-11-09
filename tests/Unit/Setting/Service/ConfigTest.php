@@ -203,6 +203,15 @@ class ConfigTest extends TestCase
         static::assertSame('Custom Title', $this->config->getTitle());
     }
 
+    public function testGetSubaccountIdIsPerSalesChannel(): void
+    {
+        $this->systemConfigService->method('get')
+            ->with(Config::KEY . 'subaccountId', 'sales-channel-id')
+            ->willReturn('RS_ABC');
+
+        static::assertSame('RS_ABC', $this->config->getSubaccountId('sales-channel-id'));
+    }
+
     public function testGetTitleFallsBackToDefaultWhenUnset(): void
     {
         $this->systemConfigService->method('get')->willReturn(null);

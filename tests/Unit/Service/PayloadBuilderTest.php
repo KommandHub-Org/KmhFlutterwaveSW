@@ -67,6 +67,10 @@ class PayloadBuilderTest extends TestCase
             ->method('getDescription')
             ->with('sales-channel-id')
             ->willReturn('Test Description');
+        $this->config->expects($this->once())
+            ->method('getSubaccountId')
+            ->with('sales-channel-id')
+            ->willReturn('RS_ABC');
 
         $payload = $this->payloadBuilder->build($orderTransaction, $paymentTransactionStruct);
         $payloadArray = $payload->toArray();
@@ -80,6 +84,7 @@ class PayloadBuilderTest extends TestCase
         $this->assertEquals('Test Title', $payloadArray['customizations']['title']);
         $this->assertEquals('http://logo.url', $payloadArray['customizations']['logo']);
         $this->assertEquals('Test Description', $payloadArray['customizations']['description']);
+        $this->assertSame('RS_ABC', $payloadArray['subaccounts'][0]['id']);
     }
 
     public function testBuildThrowsExceptionWhenOrderIsMissing(): void

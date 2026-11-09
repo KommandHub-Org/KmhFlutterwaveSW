@@ -382,6 +382,7 @@ Configure the plugin under **Extensions → My Extensions → Flutterwave → Co
 | `title` | text | Payment method title shown on Flutterwave's checkout |
 | `description` | textarea | Payment method description shown on Flutterwave's checkout |
 | `logo` | media | Logo shown on Flutterwave's checkout |
+| `subaccountId` | text | Per sales channel: Flutterwave subaccount (`RS_...`) the channel's payments settle to, with no charge for the main account; the subaccount bears Flutterwave's fees. Empty: the main account |
 | `paymentOptions` | multi-select | Which [payment channels](#supported-payment-channels) to offer; empty = all |
 | `refundEnabled` | bool | Allow refunds from the Administration |
 | `minimumRefundAmount` | float | Minimum refund amount, in the order currency's **major** units |
